@@ -1,112 +1,426 @@
 {% load staticfiles i18n %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}projectD{% endblock title %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!-- /.website title -->
+<title>{% block title %}projectD{% endblock title %}</title>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    {% block css %}
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+{% block css %}
+<!-- CSS Files -->
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+<link href="{% static 'fonts/icon-7-stroke/css/pe-icon-7-stroke.css' %}" rel="stylesheet">
+<link href="{% static 'css/animate.css' %}" rel="stylesheet" media="screen">
+<link href="{% static 'css/owl.theme.css' %}" rel="stylesheet">
+<link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
 
-    <!-- Your stuff: Third-party css libraries go here -->
-    
-    <!-- This file store project specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
-    
-    {% endblock %}
+<!-- Color Scheme -->
+<link href="{% static 'css/css-index.css' %}" rel="stylesheet" media="screen">
+{% endblock css %}
 
-  </head>
+{% block fonts %}
+<!-- Google Fonts -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic" />
+{% endblock fonts %}
 
-  <body>
+</head>
 
-    <div class="m-b">
-      <nav class="navbar navbar-dark navbar-static-top bg-inverse">
+<body data-spy="scroll" data-target="#navbar-scroll">
+
+<!-- /.preloader -->
+<div id="preloader"></div>
+<div id="top"></div>
+
+<!-- /.parallax full screen background image -->
+<div class="fullscreen landing parallax" style="background-image:url('{% static 'images/bg.jpg' %}');" data-img-width="2000" data-img-height="1333" data-diff="100">
+
+    <div class="overlay">
         <div class="container">
-          <a class="navbar-brand" href="/">projectD</a>
-          <button type="button" class="navbar-toggler hidden-sm-up pull-xs-right" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-            &#9776;
-          </button>
+            <div class="row">
+                <!-- /.left header content -->
+                <div class="col-md-7">
+                    <!-- /.logo -->
+                    <div class="logo wow fadeInDown"> <a href=""><img src="{% static 'images/logo.png' %}" alt="logo"></a></div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-toggleable-xs" id="bs-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-              </li>
-            </ul>
+                    <!-- /.main title -->
+                        <h1 class="wow fadeInLeft">
+                        Beautiful High Converting Landing Page
+                        </h1>
 
-            <ul class="nav navbar-nav pull-xs-right">
-              {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign out" %}</a>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-                </li>
-                <li class="nav-item">
-                  <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-                </li>
-              {% endif %}
-            </ul>
-          </div>
+                    <!-- /.header paragraph -->
+                    <div class="landing-text wow fadeInUp">
+                        <p>Backyard is a modern and customizable landing page template designed to increase conversion of your product. Backyard is flexible to suit any kind of your business. Try now and join with our happy customers!</p>
+                    </div>
+
+                    <!-- /.header button -->
+                    <div class="head-btn wow fadeInLeft">
+                        <a href="#services" class="btn-primary">Services</a>
+                        <a href="#consultation" class="btn-default">Consultation</a>
+                    </div>
+                </div>
+                <!-- /.left header content end -->
+
+                <!-- /.signup form -->
+                <div class="col-md-5">
+                    <div class="signup-header wow fadeInUp">
+                        <h3 class="form-title text-center">GET STARTED</h3>
+                        <form class="form-header" action="" role="form" method="POST" id="#">
+                            <div class="form-group">
+                                <input class="form-control input-lg" name="name" id="name" type="text" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control input-lg" name="email" id="email" type="email" placeholder="Email address" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control input-lg" name="password" id="password" type="password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group last">
+                                <input type="submit" class="btn btn-warning btn-block btn-lg" value="SIGNUP">
+                            </div>
+                            <p class="privacy text-center">Already have an account? <a href="privacy.html">Login Here</a>.</p>
+                            <p class="privacy text-center">We will not share your email. Read our <a href="privacy.html">privacy policy</a>.</p>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.signup form end -->
+            </div>
         </div>
-      </nav>
     </div>
+</div>
 
+<!-- NAVIGATION -->
+<div id="menu">
+    <nav class="navbar-wrapper navbar-default" role="navigation">
+        <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand site-name" href="#top"><img src="{% static 'images/logo2.png' %}" alt="logo"></a>
+              </div>
+
+              <div id="navbar-scroll" class="collapse navbar-collapse navbar-main navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="#intro">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#consultation">Consultation</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+              </div>
+        </div>
+    </nav>
+</div>
+
+<!-- /.intro section -->
+<div id="intro">
     <div class="container">
+        <div class="row">
 
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-          {% endfor %}
-      {% endif %}
+        <!-- /.intro image -->
+            <div class="col-md-6 intro-pic wow slideInLeft">
+                <img src="{% static 'images/intro-image.jpg' %}" alt="image" class="img-responsive">
+            </div>
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+            <!-- /.intro content -->
+            <div class="col-md-6 wow slideInRight">
+                <h2>Optimize performance through advanced targeting solutions</h2>
+                <p>Good marketing makes the company look smart. <a href="#">Great marketing</a> makes the customer feel smart, - Joe Chernov. Never doubt a small group of thoughtful, committed people can change the world. Indeed, it is the only thing that ever has, - Margaret Mead. The best way to predict the future is to create it, - Peter Drucker.
+                </p>
 
-    </div> <!-- /container -->
+                    <div class="btn-section"><a href="#services" class="btn-default">Learn More</a></div>
 
-    {% block modal %}{% endblock modal %}
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    {% block javascript %}
-      <!-- Latest JQuery -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<!-- /.services section -->
+<div id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-sm-12 text-center feature-title">
 
-      <!-- Tether - a requirement for Bootstrap tooltips -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+            <!-- /.feature title -->
+                <h2>Recreate your ideas and gain more success</h2>
+                <p>Increase your user loyalty by maintaining mutual communication and nurturing your online community.</p>
+            </div>
+        </div>
+        <div class="row row-feat">
+            <div class="col-md-4 text-center">
 
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+            <!-- /.feature image -->
+                <div class="feature-img">
+                    <img src="{% static 'images/feature-image.jpg' %}" alt="image" class="img-responsive wow fadeInLeft">
+                </div>
+            </div>
 
-      <!-- Your stuff: Third-party javascript libraries go here -->
+            <div class="col-md-8">
 
-      <!-- place project specific Javascript in this file -->
-      
-      <script src="{% static 'js/project.js' %}"></script>
-      
+                <!-- /.feature 1 -->
+                <div class="col-sm-6 feat-list">
+                    <i class="pe-7s-notebook pe-5x pe-va wow fadeInUp"></i>
+                    <div class="inner">
+                        <h4>Marketing Strategy</h4>
+                        <p>Good marketing makes the company look smart. Great marketing makes the customer feel smart.
+                        </p>
+                    </div>
+                </div>
 
-    {% endblock javascript %}
+                <!-- /.feature 2 -->
+                <div class="col-sm-6 feat-list">
+                    <i class="pe-7s-cash pe-5x pe-va wow fadeInUp" data-wow-delay="0.2s"></i>
+                    <div class="inner">
+                        <h4>App Monetization</h4>
+                        <p>Content builds relationships. Relationships are built on trust. Trust drives revenue. - Andrew Davis</p>
+                    </div>
+                </div>
+
+                <!-- /.feature 3 -->
+                <div class="col-sm-6 feat-list">
+                    <i class="pe-7s-cart pe-5x pe-va wow fadeInUp" data-wow-delay="0.4s"></i>
+                    <div class="inner">
+                        <h4>Store Optimization</h4>
+                        <p>Never doubt a small group of thoughtful, committed people can change the world. Indeed, it is the only thing that ever has.</p>
+                    </div>
+                </div>
+
+                <!-- /.feature 4 -->
+                <div class="col-sm-6 feat-list">
+                    <i class="pe-7s-users pe-5x pe-va wow fadeInUp" data-wow-delay="0.6s"></i>
+                    <div class="inner">
+                        <h4>User Management</h4>
+                        <p>Instead of using technology to automate processes, think about using technology to enhance human interaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.feature 2 section -->
+<div id="feature-2">
+    <div class="container">
+        <div class="row">
+
+            <!-- /.feature content -->
+            <div class="col-md-6 wow fadeInLeft">
+                <h2>Learn how to make your app marketing efficient</h2>
+                <p>Good marketing makes the company look smart. <span class="highlight">Great marketing</span> makes the customer feel smart, - Joe Chernov. Never doubt a small group of thoughtful, committed people can change the world. Indeed, it is the only thing that ever has, - Margaret Mead. The best way to predict the future is to create it, - Peter Drucker.
+                </p>
+
+                    <div class="btn-section"><a href="#download" class="btn-default">Download Now</a></div>
+
+            </div>
+
+            <!-- /.feature image -->
+            <div class="col-md-6 feature-2-pic wow fadeInRight">
+                <img src="{% static 'images/feature2-image.jpg' %}" alt="macbook" class="img-responsive">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- /.consultation section -->
+<div id="consultation">
+    <div class="action fullscreen parallax" style="background-image:url('{% static 'images/bg.jpg' %}');" data-img-width="2000" data-img-height="1333" data-diff="100">
+        <div class="overlay">
+            <div class="container">
+                <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
+
+                    <!-- /.download title -->
+                    <h2 class="wow fadeInRight">Would like to know more?</h2>
+                    <p class="download-text wow fadeInLeft">We'll research the market, identify the right target audience, analyze competitors and avoid users churn to increase retention. Download now for free and join with thousands happy clients.</p>
+
+                    <!-- /.download button -->
+                        <div class="download-cta wow fadeInLeft">
+                            <a href="#contact" class="btn-secondary">Get Connected</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.client section -->
+<div id="client">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <img alt="client" src="{% static 'images/company.jpg' %}" class="wow fadeInUp">
+                <img alt="client" src="{% static 'images/company.jpg' %}" class="wow fadeInUp" data-wow-delay="0.2s">
+                <img alt="client" src="{% static 'images/company.jpg' %}" class="wow fadeInUp" data-wow-delay="0.4s">
+                <img alt="client" src="{% static 'images/company.jpg' %}" class="wow fadeInUp" data-wow-delay="0.6s">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.testimonial section -->
+<div id="testi">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="wow fadeInLeft">TESTIMONIALS</h2>
+            <div class="title-line wow fadeInRight"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+               <div id="owl-testi" class="owl-carousel owl-theme wow fadeInUp">
+
+                    <!-- /.testimonial 1 -->
+                    <div class="testi-item">
+                        <div class="client-pic text-center">
+
+                            <!-- /.client photo -->
+                            <img src="{% static 'images/client.jpg' %}" alt="client">
+                        </div>
+                        <div class="box">
+
+                            <!-- /.testimonial content -->
+                            <p class="message text-center">"We are very happy and satisfied with Backyard service. Our account manager is efficient and very knowledgeable. It was able to create a vast fan base within very short period of time. We would highly recommend Backyard App to anyone."</p>
+                        </div>
+                        <div class="client-info text-center">
+
+                        <!-- /.client name -->
+                            Jennifer Lopez, <span class="company">Microsoft</span>
+                        </div>
+                    </div>
+
+                    <!-- /.testimonial 2 -->
+                    <div class="testi-item">
+                        <div class="client-pic text-center">
+
+                            <!-- /.client photo -->
+                            <img src="{% static 'images/client.jpg' %}" alt="client">
+                        </div>
+                        <div class="box">
+
+                            <!-- /.testimonial content -->
+                            <p class="message text-center">"Everything looks great... Thanks for the quick revision turn around. We were lucky to find you guys and will definitely be using some of your other services in the near future."</p>
+                        </div>
+                        <div class="client-info text-center">
+
+                            <!-- /.client name -->
+                            Mike Portnoy, <span class="company">Dream Theater</span>
+                        </div>
+                    </div>
+
+                    <!-- /.testimonial 3 -->
+                    <div class="testi-item">
+                        <div class="client-pic text-center">
+
+                            <!-- /.client photo -->
+                            <img src="{% static 'images/client.jpg' %}" alt="client">
+                        </div>
+                        <div class="box">
+
+                            <!-- /.testimonial content -->
+                            <p class="message text-center">"Overall, the two reports were very clear and helpful so thank you for the suggestion to do the focus group. We are currently working with our developer to implement some of these suggestions."</p>
+                        </div>
+                        <div class="client-info text-center">
+
+                            <!-- /.client name -->
+                            Jennifer Love Hewitt, <span class="company">Lead Vocal</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.contact section -->
+<div id="contact">
+    <div class="contact fullscreen parallax" style="background-image:url('{% static 'images/bg.jpg' %}');" data-img-width="2000" data-img-height="1334" data-diff="100">
+        <div class="overlay">
+            <div class="container">
+                <div class="row contact-row">
+
+                    <!-- /.address and contact -->
+                    <div class="col-sm-5 contact-left wow fadeInUp">
+                        <h2><span class="highlight">Get</span> in touch</h2>
+                            <ul class="ul-address">
+                            <li><i class="pe-7s-map-marker"></i>1600 Amphitheatre Parkway, Mountain View</br>
+                            California 55000
+                            </li>
+                            <li><i class="pe-7s-phone"></i>+1 (123) 456-7890</br>
+                            +2 (123) 456-7890
+                            </li>
+                            <li><i class="pe-7s-mail"></i><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
+                            <li><i class="pe-7s-look"></i><a href="#">www.yoursite.com</a></li>
+                            </ul>
+
+                    </div>
+
+                    <!-- /.contact form -->
+                    <div class="col-sm-7 contact-right">
+                        <form method="POST" id="contact-form" class="form-horizontal" action="contactengine.php" onSubmit="alert('Thank you for your feedback!');">
+                            <div class="form-group">
+                            <input type="text" name="Name" id="Name" class="form-control wow fadeInUp" placeholder="Name" required/>
+                            </div>
+                            <div class="form-group">
+                            <input type="text" name="Email" id="Email" class="form-control wow fadeInUp" placeholder="Email" required/>
+                            </div>
+                            <div class="form-group">
+                            <textarea name="Message" rows="20" cols="20" id="Message" class="form-control input-message wow fadeInUp"  placeholder="Message" required></textarea>
+                            </div>
+                            <div class="form-group">
+                            <input type="submit" name="submit" value="Submit" class="btn btn-success wow fadeInUp" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="col-sm-4 col-sm-offset-4">
+            <!-- /.social links -->
+                <div class="social text-center">
+                    <ul>
+                        <li><a class="wow fadeInUp" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="wow fadeInUp" href="https://www.facebook.com/" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="wow fadeInUp" href="https://plus.google.com/" data-wow-delay="0.4s"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a class="wow fadeInUp" href="https://instagram.com/" data-wow-delay="0.6s"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            <div class="text-center wow fadeInUp" style="font-size: 14px;">Copyright Backyard 2015 - Template by <a href="http://www.moxdesign.com">MoxDesign</a></div>
+            <a href="#" class="scrollToTop"><i class="pe-7s-up-arrow pe-va"></i></a>
+        </div>
+    </div>
+</footer>
+
+    {% block js %}
+    <!-- /.javascript files -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script>
+        new WOW().init();
+    </script>
+    {% endblock js%}
   </body>
 </html>
- 
