@@ -103,7 +103,8 @@ MANAGERS = ADMINS
 # export DATABASE_URL='sqlite:////home/yourusername/path/to/db.sqlite'
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db('DATABASE_URL', default='postgres:///projectd'),
+    # 'default': env.db('DATABASE_URL', default='postgres:///projectd'),
+    'default': env.db('mysql://root:root@localhost:5432/projectd', default='mysql://root:root@localhost:5432/projectd')
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
